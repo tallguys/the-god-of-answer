@@ -1,2 +1,2 @@
 # the-god-of-answer
-start of the mini program
+start of a wechat mini program
