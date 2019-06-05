@@ -201,15 +201,20 @@ const book_answers: Array<string> = [
 ]
 
 const my_answers: Array<string> = [
-  'Absolutely yes',
-  'Absolutely no',
   '遵循你的内心',
   '勿忘初心，方得始终',
   '你说是就是',
   '我觉得可以',
   '加油吧',
   '这倒未必',
-  '一定行'
+  '一定行',
+  '动动你的小脑筋',
+  '有志者事竟成',
+  '钱可以解决的问题就不是问题',
+  '我能理解你',
+  '这种事情我不能替你决定',
+  '凡事量力而为',
+  '既来之则安之'
 ]
 
 export default my_answers.concat(book_answers);

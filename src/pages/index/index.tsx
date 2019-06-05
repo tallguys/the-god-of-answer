@@ -24,6 +24,9 @@ export default class Index extends Component<MyProps, MyState> {
   config: Config = {
     navigationBarTitleText: '答案之神'
   }
+  handleClose: undefined;
+  handleCancel: undefined;
+  handleConfirm: undefined;
 
   constructor(props) {
     super(props);
@@ -71,7 +74,7 @@ export default class Index extends Component<MyProps, MyState> {
     return (
       <View className='index'>
         <View className='manual-container'>
-          <View className='title'><Text># Hello</Text></View>
+          <View className='title'><Text># 介绍</Text></View>
           <AtDivider />
           <View className='list'><Text>这是一款可以在你陷入麻烦摇摆不定左右为难犹豫不决时给予你帮助的app。</Text></View>
         </View>
@@ -89,12 +92,14 @@ export default class Index extends Component<MyProps, MyState> {
           <AtButton className='button' size='normal' circle type='primary'
             loading={this.state.loading}
             disabled={this.state.btnDisabled}
-            onClick={this.getAnswer}>请给我答案吧！</AtButton>
+            onClick={this.getAnswer}
+          >请给我答案吧！</AtButton>
         </View>
         <AtToast
           isOpened={this.state.isOpened}
           text={this.state.answer}
-          duration={5000}>
+          duration={5000}
+        >
         </AtToast>
       </View >
     )
