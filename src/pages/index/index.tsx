@@ -71,6 +71,11 @@ export default class Index extends Component<MyProps, MyState> {
   }
 
   render() {
+    // wx config
+    Taro.showShareMenu({
+      withShareTicket: true,
+    });
+
     return (
       <View className='index'>
         <View className='manual-container'>
