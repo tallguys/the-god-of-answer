@@ -1,6 +1,6 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { AtButton, AtDivider, AtToast } from 'taro-ui'
+import { AtButton, AtDivider, AtModal } from 'taro-ui'
 import './index.scss'
 import answers from '../../enums/answers';
 
@@ -24,9 +24,6 @@ export default class Index extends Component<MyProps, MyState> {
   config: Config = {
     navigationBarTitleText: '答案之神'
   }
-  handleClose: undefined;
-  handleCancel: undefined;
-  handleConfirm: undefined;
 
   constructor(props) {
     super(props);
@@ -37,6 +34,9 @@ export default class Index extends Component<MyProps, MyState> {
       btnDisabled: false
     }
     this.getAnswer = this.getAnswer.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
   }
 
   componentWillMount() { }
@@ -51,23 +51,37 @@ export default class Index extends Component<MyProps, MyState> {
 
   getAnswer(event) {
     this.setState({
-      isOpened: false,
       loading: true,
       btnDisabled: true
     });
 
-    const ramdon = Math.floor(Math.random() * 1000);
     const answer = answers[Math.floor(Math.random() * answers.length)];
+    const ramdon = Math.floor(Math.random() * 1000);
 
     setTimeout(() => {
       this.setState({
         isOpened: true,
         answer: answer,
         loading: false,
-        btnDisabled: false
       });
     }, 500 + ramdon);
+
     event.preventDefault();
+  }
+
+  handleClose() {
+    this.setState({
+      isOpened: false,
+      btnDisabled: false,
+    });
+  }
+
+  handleCancel() {
+    this.handleClose();
+  }
+
+  handleConfirm() {
+    this.handleClose();
   }
 
   render() {
@@ -100,12 +114,15 @@ export default class Index extends Component<MyProps, MyState> {
             onClick={this.getAnswer}
           >请给我答案吧！</AtButton>
         </View>
-        <AtToast
+        <AtModal
           isOpened={this.state.isOpened}
-          text={this.state.answer}
-          duration={5000}
+          title={this.state.answer}
+          confirmText='我明白了！'
+          onClose={this.handleClose}
+          onCancel={this.handleCancel}
+          onConfirm={this.handleConfirm}
         >
-        </AtToast>
+        </AtModal>
       </View >
     )
   }
