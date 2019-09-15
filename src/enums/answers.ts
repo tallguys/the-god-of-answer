@@ -221,6 +221,10 @@ const my_answers: Array<string> = [
   '重拾你的梦想',
   '其实很简单',
   '其实并不难',
+  '不必问我，你可以自己有答案',
+  '永远不要让结局掩盖了故事的光芒',
+  'The sooner you push it to a head, the sooner it’s behind you.',
+  '旁观者清，当局者迷',
 ]
 
 export default my_answers.concat(book_answers);
